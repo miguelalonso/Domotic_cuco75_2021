@@ -217,7 +217,7 @@ function clickOn(nr)
                       "&endTime=" + timers[nr].prog[i].endTime+
                       "&days=" + days+
                       "&sun_set="+timers[nr].prog[i].sun_set+
-                      "&sign_delay="+timers[nr].prog[i].delay+
+                      "&sign_delay="+timers[nr].prog[i].sign_delay+
                       "&onoff="+timers[nr].prog[i].onoff+
                       "&delay_time="+timers[nr].prog[i].delay_time+
                       "&aleatorio="+timers[nr].prog[i].aleatorio
@@ -237,7 +237,7 @@ function clickOn(nr)
 
         function update(i)    //guardar los datos en el nodeMCU
         {
-          console.log("Savind data to server..."+i)
+          console.log("Saving data to server..."+i)
           showSuccess("Tratando de grabar datos...");
           timers[nr].prog[i].name = $("#txt_name_prog"+i).val()
           timers[nr].prog[i].startTime = $("#startTime_prog"+i).val()
@@ -266,7 +266,7 @@ function clickOn(nr)
                   "&endTime=" + timers[nr].prog[i].endTime+
                   "&days=" + days+
                   "&sun_set="+timers[nr].prog[i].sun_set+
-                  "&sign_delay="+timers[nr].prog[i].delay+
+                  "&sign_delay="+timers[nr].prog[i].sign_delay+
                   "&onoff="+timers[nr].prog[i].onoff+
                   "&delay_time="+timers[nr].prog[i].delay_time+
                   "&aleatorio="+timers[nr].prog[i].aleatorio
@@ -408,8 +408,8 @@ function clickOn(nr)
               str +=" <td>"
 
               str +="<select  id='delay"+elementId+"'>"
-              str +=  "<option value=0 selected>Delay +</option>"
-              str +=  "<option value=1>Delay -</option></select>"
+              str +=  "<option value=1 selected>Delay +</option>"
+              str +=  "<option value=-1>Delay -</option></select>"
 
               str +="</td>"
 
@@ -526,7 +526,7 @@ function clickOn(nr)
                 });
 
                 $("#delay"+elementId).change(function(){
-                    timers[nr].prog[elementId].delay= $(this).val();
+                    timers[nr].prog[elementId].sign_delay= $(this).val();
                 });
 
 
