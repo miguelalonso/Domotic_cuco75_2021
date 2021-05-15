@@ -412,11 +412,11 @@ void updateGpio(){
         if ( etat == "1" ) {
           digitalWrite(pin, LOW);
           estados[num_pin]=true;
-          Abrirpuerta(0);
+          AbrirToldo(0);
         } else if ( etat == "0" ) {
           digitalWrite(pin, HIGH);
           estados[num_pin]=false;
-          Cerrarpuerta(0);
+          CerrarToldo(0);
         } else {
           success = "1";
           DPRINTLN("Error Salida Digital");
@@ -455,7 +455,7 @@ void sendGPIO() {
 
 
 
-void sendTabMesures() {
+void sendTabMesures2() {
   double temp = PH_ant;
   String json = "[";
   json += "{\"medida\":\"PH\",\"valor\":\"" + String(Cenit) + "\",\"unidad\":\" º\",\"precedente\":\"" + String(temp) + "\"},";

@@ -9,21 +9,23 @@ const char* mqttServer = "broker.emqx.io";   //server
 const char* mqttUser = "emqx";              //user
 const char* mqttPassword = "public";      //password
 const int mqttPort = 1883;                     //port
-const char* mqttTopicSub ="cuco75/PuertaGaraje";            //topic
+const char* mqttTopicSub ="cuco75/Toldo2";            //topic
 unsigned long lastMsg = 0; 
 int value = 0;
 #define MSG_BUFFER_SIZE  (50)
 char msg[MSG_BUFFER_SIZE];
   
 void setup_mqtt() {
+ 
+ 
  client.setServer(mqttServer, mqttPort);
  client.setCallback(callback);
  while (!client.connected()) {
    Serial.println("Connecting to MQTT Broker...");
-    String clientId = "PuertaGaraje-";
+    String clientId = "Toldo2-";
     clientId += String(random(0xffff), HEX);
     
-   if (client.connect(clientId.c_str(), mqttUser, mqttPassword )) {  
+   if (client.connect(clientId.c_str(), mqttUser, mqttPassword )) {     Serial.println("Connected");  
      Serial.println("Connected");  
    } else {
       Serial.print("state failure  ");
@@ -49,7 +51,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
  Serial.println("-----------------------");
  
      
-  if (strcmp(topic , "cuco75/PuertaGaraje")==0){ 
+  if (strcmp(topic , "cuco75/Toldo2")==0){ 
     Serial.print("The message arrived from the topic: ");
     Serial.println(topic);
     Serial.println("topic OK");
@@ -65,7 +67,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
   byte* p = (byte*)malloc(length);
   // Copy the payload to the new buffer
   memcpy(p,payload,length);
-  client.publish("cuco75/PuertaGaraje/confirma", p, length);
+  client.publish("cuco75/Toldo2/confirma", p, length);
     
   // Free the memory
   free(p);
@@ -73,19 +75,19 @@ void callback(char* topic, byte* payload, unsigned int length) {
  if (strMSG == "1"){        //if msg equal "1"
         estado_anterior=0; //por si acaso el programa se ha reseteado, cambio el estado
         estados[0]=0; //en control por voz se supone que se ve lo que hay
-        Abrirpuerta(0);
+        AbrirToldo(0);
  
     //digitalWrite(L1, LOW);  //output LOW to turn on the Lamp 
  }else if (strMSG == "0"){   //if msg equal "0"
         estado_anterior=1; //por si acaso el programa se ha reseteado, cambio el estado
         estados[0]=1; //en control por voz se supone que se ve lo que hay
-        Cerrarpuerta(0);
+        CerrarToldo(0);
  
     //digitalWrite(L1, HIGH);   //output LOW to turn off the Lamp 
  } else if(porcentaje > 0){   // porcentaje
         estado_anterior=1; //por si acaso el programa se ha reseteado, cambio el estado
         estados[0]=1; //en control por voz se supone que se ve lo que hay
-        Abrirpuerta_parcial(porcentaje);
+        AbrirToldo_parcial(porcentaje);
 
   }
 }
@@ -103,7 +105,7 @@ void reconect() {
   }
   
    Serial.print("Trying connect to MQTT broker");
-   String clientId = "PuertaGaraje-";
+   String clientId = "Toldo2-";
    clientId += String(random(0xffff), HEX);
   
    bool connected = strlen(mqttUser) > 0 ?
@@ -137,16 +139,16 @@ void reconect() {
       lastMsg = now;
       ++value;
       //snprintf (msg, MSG_BUFFER_SIZE, "hello world #%ld", value);
-      snprintf (msg, MSG_BUFFER_SIZE, "millis PuertaGaraje #%ld", now);
+      snprintf (msg, MSG_BUFFER_SIZE, "millis Toldo2 #%ld", now);
       //Serial.print("Publish message: ");
       //Serial.println(msg);
-      client.publish("cuco75/PuertaGaraje/millis", msg);
+      client.publish("cuco75/Toldo2/millis", msg);
       //String ip3=String(WiFi.localIP()[3]);
-      snprintf (msg, MSG_BUFFER_SIZE, "ip PuertaGaraje #%ld", WiFi.localIP()[3]);
-      client.publish("cuco75/PuertaGaraje/ip", msg);
+      snprintf (msg, MSG_BUFFER_SIZE, "ip Toldo2 #%ld", WiFi.localIP()[3]);
+      client.publish("cuco75/Toldo2/ip", msg);
       
-      snprintf (msg, MSG_BUFFER_SIZE, "Estado PuertaGaraje #%ld", estados[0]);
-      client.publish("cuco75/PuertaGaraje/estado", msg);
+      snprintf (msg, MSG_BUFFER_SIZE, "Estado Toldo2 #%ld", estados[0]);
+      client.publish("cuco75/Toldo2/estado", msg);
     }
   }
   

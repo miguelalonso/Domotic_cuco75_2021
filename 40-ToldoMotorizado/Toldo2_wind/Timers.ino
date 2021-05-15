@@ -123,8 +123,8 @@ void controlTimers(int j){
 //       
       if (actuar){ //obligar a actuar
          Serial.print(" Iniciando control : ");Serial.println(salida2);
-          abriendo_puerta=0;
-          cerrando_puerta=0;
+          abriendo_toldo=0;
+          cerrando_toldo=0;
           estados[0]=!salida2;
           estado_anterior=!salida2;
           timers_estado_anterior=!salida2;
@@ -143,7 +143,7 @@ void control_rele(int j, int Output){
     Serial.print("Acctuando Outpu a:"); Serial.println(Output);
     switch( j){
     case 0:
-      controlpuerta(Output);
+      controlToldo(Output);
       break;
     }
 }

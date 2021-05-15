@@ -1,16 +1,16 @@
 void setupConfig(){
   
     pinMode(D4, OUTPUT); //LED interno para el estado del Motor 1
-    pinMode(D7, OUTPUT); //RELE 1
-    pinMode(D6, OUTPUT); // rELE2
+    pinMode(D7, OUTPUT); // Final de carrera arriba
+    pinMode(D6, OUTPUT); // Final de carrera abajo
     pinMode(D5, INPUT); // Botón manual subir/bajar
 
           
-          digitalWrite(D6,HIGH); // D6  pulso abre/cierra puerta
-          digitalWrite(D7,HIGH);  // D7  alimenta motor
+          digitalWrite(D6,LOW); // D6  abre toldo
+          digitalWrite(D7,LOW);  // D7  cierra toldo
   
     Serial.begin ( 9600 );
-    Serial.println("puerta motorizado Cuco 75!");
+    Serial.println("Toldo motorizado Cuco 75!");
 
     strcpy(conf.pwd,"121212");
     init_display();
@@ -19,9 +19,9 @@ void setupConfig(){
     conf.IP_3            = 15;
     conf.IP_4            = 28;
     conf. EEPROM_chk     =123;
-    conf.Latitud         =40.41;
-    conf.Longitud        =-3.731;
-    strcpy(conf.DevName,"PuertaGaraje");
+    conf.Latitud         =40.65;
+    conf.Longitud        =-3.96;
+    strcpy(conf.DevName,"Toldo2");
     strcpy(conf.thingspeak_api_key,thingspeak_api_key);
     conf.time_thinkspeak           = 30000;
     strcpy(conf.ip_emoncms,ip_emoncms);
@@ -39,10 +39,10 @@ void setupConfig(){
       conf.time_thinkspeak  = 30000;
     }
 
-    if (strlen(conf.apikey) < 5) {
+    if (strlen(conf.apikey) < 3) {
       strcpy(conf.apikey,apikey);
     }
-    if (strlen(conf.ip_emoncms) < 5) {
+    if (strlen(conf.ip_emoncms) < 3) {
       strcpy(conf.ip_emoncms,ip_emoncms);
     }
     if (strlen(conf.url_base) < 3) {
@@ -54,11 +54,11 @@ void setupConfig(){
     if (conf.time_emoncms <= 0) {
       conf.time_emoncms  = 90000;
     }
-     if (conf.a == 0) {  //en conf.a tiempo subir 90s
-      conf.a  = 90;
+     if (conf.a == 0) {  //en conf.a tiempo subir 20s
+      conf.a  = 20;
     }
-     if (conf.b == 0) { //en conf.b viene timepo bajar 90s
-      conf.b  = 90;
+     if (conf.b == 0) { //en conf.b viene timepo bajar 20s
+      conf.b  = 20;
     }
 
      if (conf.c == 0) { //en conf.c viene reserva

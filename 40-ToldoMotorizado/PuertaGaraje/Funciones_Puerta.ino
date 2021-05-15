@@ -4,8 +4,8 @@ void leer_boton(){
        if (buttonState == HIGH && (millis()-timeOld3) > 1000) {
           t_funciona=0;
           //PuertaGaraje, relés al revés
-          digitalWrite(D6,LOW); // D6  abre/cierra puerta
-          digitalWrite(D7,LOW);  // D7  alimenta motor puerta
+          digitalWrite(D6,HIGH); // D6  abre/cierra puerta
+          digitalWrite(D7,HIGH);  // D7  alimenta motor puerta
         timeOld3=millis();
         Serial.println("Boton pulsado");
 
@@ -76,18 +76,18 @@ void Abrirpuerta(int t_accionamiento){
   if(t_accionamiento==0){
       t_accionamiento=conf.a*1000;
     }
-  if(estado_anterior){return;} //ya está abierta
-  Serial.print("Abrir puerta: ");Serial.println(t_funciona);
+  if(estado_anterior){Serial.println("Error:puerta ya abierta");return;} //ya está abierta
+  Serial.print("Abrir puerta (ms): ");Serial.println(t_funciona);
 
      if(!abriendo_puerta){
       Serial.print("Abriendo puerta : ");
       abriendo_puerta=1;
-      digitalWrite(D4,LOW);
-      digitalWrite(D7,HIGH);  // D7  alimenta motor
+      digitalWrite(D4,HIGH);
+      digitalWrite(D7,LOW);  // D7  alimenta motor
       delay(1000);      
-      digitalWrite(D6,HIGH); // D6  cierra relé
+      digitalWrite(D6,LOW); // D6  cierra relé
       delay(500); //espera 500ms para dar un pulso
-      digitalWrite(D6,LOW);  // D6  abre relé
+      digitalWrite(D6,HIGH);  // D6  abre relé
       t_ini_abrir=millis();
      }
      
@@ -99,8 +99,8 @@ void Abrirpuerta(int t_accionamiento){
           estado_anterior=1;
           estados[0]=1;
           t_funciona=0;
-          digitalWrite(D6,LOW); // D6  abre/cierra puerta
-          digitalWrite(D7,LOW);  // D7  apaga motor
+          digitalWrite(D6,HIGH); // D6  abre/cierra puerta
+          digitalWrite(D7,HIGH);  // D7  apaga motor
           }
     
 }
@@ -110,18 +110,20 @@ void Cerrarpuerta(int t_accionamiento){
   if(t_accionamiento==0){
       t_accionamiento=conf.b*1000;
     }
-   if(!estado_anterior){return;} //ya está cerrada
-    Serial.print("Cerrando puerta: ");Serial.println(t_funciona);
+   if(!estado_anterior){
+    Serial.println("Error:puerta ya cerrada");
+    return;} //ya está cerrada
+    Serial.print("Cerrando puerta (ms): ");Serial.println(t_funciona);
 
      if(!cerrando_puerta){
       Serial.print("Cerrando puerta : ");
       cerrando_puerta=1;
-      digitalWrite(D4,HIGH);
-      digitalWrite(D7,HIGH);  // D7  alimenta motor
+      digitalWrite(D4,LOW);
+      digitalWrite(D7,LOW);  // D7  alimenta motor
       delay(1000);      
-      digitalWrite(D6,HIGH); // D6  cierra relé
+      digitalWrite(D6,LOW); // D6  cierra relé
       delay(500); //espera 500ms para dar un pulso
-      digitalWrite(D6,LOW);  // D6  abre relé
+      digitalWrite(D6,HIGH);  // D6  abre relé
       t_ini_cerrar=millis();
      }
      

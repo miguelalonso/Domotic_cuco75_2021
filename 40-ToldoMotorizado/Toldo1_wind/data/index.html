@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>PuertaGaraje</title>
+    <title>Toldo1</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -47,18 +47,18 @@
       </div>
 
     <div class="container-fluid">
-      <h1><span id="titulo">PuertaGaraje</span></h1>
+      <h1><span id="titulo">Toldo1</span></h1>
       <nav class="nav nav-tabs" id="tab">
         <a href="#tab_mesures" class="nav-item nav-link active" data-toggle="tab">Medidas</a>
         <a href="#tab_graphs" class="nav-item nav-link" data-toggle="tab">Timers</a>
         <a href="#tab_gpio" class="nav-item nav-link" data-toggle="tab">Rel&eacute;s  </a>
         <a href="#tab_configuration" class="nav-item nav-link" data-toggle="tab">Configuraci&oacute;n</a>
-        <a href="#tab_temp" class="nav-item nav-link" data-toggle="tab">Control PuertaGaraje</a>
+        <a href="#tab_temp" class="nav-item nav-link" data-toggle="tab">Control Toldo1</a>
       </nav>
       <div class="tab-content">
         <div id="tab_mesures" class="tab-pane fade show active" >
-          <h2><span id="titulo">Estore PuertaGaraje  Web</span></h2>
-          <h6>control PuertaGaraje con tubular motor <span class="badge badge-primary">PG_SM</span></h6>
+          <h2><span id="titulo">Estore Toldo1  Web</span></h2>
+          <h6>control Toldo1 con tubular motor <span class="badge badge-primary">PG_SM</span></h6>
           <h6>De momento no hay medidas, lo de abajo es el cenit y los millis() <span class="badge badge-primary">PG2_SM2</span></h6>
           <ul class="nav nav-pills">
             <li class="active"><a href="#">
@@ -83,7 +83,7 @@
         </div>
 
          <div class="tab-pane fade" id="tab_graphs">
-          <h2>Configure Timers -Temporizadores para el PuertaGaraje</h2><span>Reles </span><span style="color:blue"> &nbsp;  Escriba la constraseña o "test" y click "GO" button </span>
+          <h2>Configure Timers -Temporizadores para el Toldo1</h2><span>Reles </span><span style="color:blue"> &nbsp;  Escriba la constraseña o "test" y click "GO" button </span>
           <h4 class="text-center">
             Password : <input type="text" class="input-lg" id="piIp"> <button type="button" id="btn_go" class="btn btn-lg btn-success">Go</button>
           </h4>
@@ -91,7 +91,7 @@
           <div class="m-b">
             Seleccione el Rele a configurar
             <div class="btn-group">
-              <button type="button" class=" active btn btn-info" id="D4b">D4_PuertaGaraje</button>
+              <button type="button" class=" active btn btn-info" id="D4b">D4_Toldo1</button>
               <button type="button" class="btn btn-info" id="D00b" >--</button>
               <button type="button" class="btn btn-info" id="D44b">--</button>
               <button type="button" class="btn btn-info" id="D00b">--</button>
@@ -109,7 +109,7 @@
           <h53>Un motor en la tarjeta PCA9685 - Estado indicado en LED interno D4</h5>
           <div class="row">
             <div class="col-xs-6 col-md-4">
-              <h4 class="text-left">D4_PuertaGaraje
+              <h4 class="text-left">D4_Toldo1
                 <div class="badge badge-warning badge-pill" id="D4_etat">OFF</div>
               </h4>
             </div>
@@ -137,12 +137,12 @@
 
 
         <div class="tab-pane fade" id="tab_temp">
-          <h2>Control del PuertaGaraje</h2>
+          <h2>Control del Toldo1</h2>
 
           <div class="row">
 
             <div class="col-xs-6 col-md-4">
-              <h4 class="text-left">D4 PuertaGaraje
+              <h4 class="text-left">D4 Toldo1
                 <span class="badge badge-warning badge-pill" id="D4m_etat">OFF</span>
               </h4>
             </div>
@@ -157,7 +157,7 @@
               <br>
                 <table> <tr> <td>
                     <div class="col-xs-6 col-md-6">
-                      <h6> Ajuste del % apertura del PuertaGaraje:</h6> <b>0%</b>
+                      <h6> Ajuste del % apertura del Toldo1:</h6> <b>0%</b>
                       <input id="PH_slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="60" data-slider-step="1" data-slider-value="[15,30]"/> <b>100%</b>
                     </div>
                   </td><td>
@@ -381,7 +381,7 @@
 
 
                       <div class="form-group row">
-                        <label for="PH_mode" class="col-sm-8 form-control-label">Modo de control PuertaGaraje (0-3)</label>
+                        <label for="PH_mode" class="col-sm-8 form-control-label">Modo de control Toldo1 (0-3)</label>
                         <div class="col-sm-2">
                           <input type="text" class="form-control" id="PH_mode" name="PH_mode" >
                         </div>

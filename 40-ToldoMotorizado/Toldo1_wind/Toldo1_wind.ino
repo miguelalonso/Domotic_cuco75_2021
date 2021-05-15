@@ -1,10 +1,10 @@
 /*
  * Adaptado por Miguel Alonso Abella en Abril 2021 
- * Control para puerta garaje
+ * Toldo motorizado
  *  
- * D5--> Boton - equivalente al botón ya instalado en la puerta
- * D6--> Rele pulso para abir/cerrar  puerta
- * D7 --> Rele para dar alimentación al motor
+ * D5--> Boton
+ * D7--> Rele cerrar toldo
+ * D6 --> Rele Abrir toldo
  * D8-->
  */
 
@@ -48,7 +48,7 @@
 
 #include <Espalexa.h>
 //callback functions
-void puertaChanged(uint8_t brightness);
+void ToldoChanged(uint8_t brightness);
 Espalexa espalexa;
 
 //mqtt
@@ -79,7 +79,6 @@ void setup() {
   //server.begin(); //omit this since it will be done by espalexa.begin(&server)
   Serial.println ( "HTTP server started" );
   InitOTA();
-  
 }
 
 void loop() {
@@ -108,7 +107,15 @@ void loop() {
       client.loop();
       publicar_mqtt();
 
-      if(abriendo_puerta){Abrirpuerta(t_accionamiento);}
-      if(cerrando_puerta){Cerrarpuerta(t_accionamiento);}
+      if(abriendo_toldo){AbrirToldo(t_accionamiento);}
+      if(cerrando_toldo){CerrarToldo(t_accionamiento);}
+
+    if (millis() - lastConnectionTime > postInterval) {
+          Serial.println("Solicitando datos openWheatherMap");
+          lastConnectionTime = millis();
+          Request_OpenWheatherMap();
+          Serial.println("Nº pedido: ");
+          Serial.println(n++);
+      }
  
   }

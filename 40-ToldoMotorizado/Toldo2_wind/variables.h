@@ -4,12 +4,11 @@
 // cSunCoordinates sun;
 // cTime fecha_hora_PSA;
 
-
 int   buttonState = 0; 
 long  timeOld3    = 0;
 
-boolean abriendo_puerta;
-boolean cerrando_puerta;
+boolean abriendo_toldo;
+boolean cerrando_toldo;
 int t_funciona=0;
 int t_accionamiento=0;
 boolean timers_estado_anterior=0;
@@ -17,40 +16,27 @@ boolean timers_estado_anterior=0;
 
 char thingspeak_api_key[20]="1J8HKOKXIW0ZBHVR";
 long time_thinkspeak = 30000;
+
+
 //char ip_emoncms[50] = "miguelalonso.eu3.org";
 //char url_base[50] = "http://miguelalonso.eu3.org/emoncms";
-//char node[20]="PuertaGaraje";
+//char node[20]="Toldo2";
 //char apikey[50]="49f90831aa8cfbf9953e7a500f8ad065";
 
-//char ip_emoncms[50] = "163.117.157.189";
-//char url_base[50] = "/emoncms";
-//char node[20]="PuertaGaraje";
-//char apikey[50]="f90addbe03055fbde7123cdc1996d59b";
+char ip_emoncms[50] = "163.117.157.189";
+char url_base[50] = "/emoncms";
+char node[20]="Toldo2";
+char apikey[50]="f90addbe03055fbde7123cdc1996d59b";
 
-//char ip_emoncms[50] = "cuco75.rf.gd";
-//char url_base[50] = "http://cuco75.rf.gd/emoncms";
-//char node[20]="PuertaGaraje";
-//char apikey[50]="f8384bbba6fac0f22c917c73c93fbd2f";
+long time_emoncms_ant = 32000;
 
-//https://johnny.heliohost.org:2083/cpsess8743144364/frontend/paper_lantern/sql/index.html
-// en heiohost
-//usuario miguelfo
-// pwd @+mia
-
-char ip_emoncms[50] = "cuco75.heliohost.us";
-char url_base[50] = "http://cuco75.heliohost.us/emoncms";
-char node[20]="PuertaGaraje";
-char apikey[50]="26fedbe867eace9453b6d42a36e270e9";
-
-
-
-long time_emoncms_ant = 0;
 // NTP Servers:
 //static const char ntpServerName[] = "us.pool.ntp.org";
 char ntpServerName[50] = "time.nist.gov";
 //static const char ntpServerName[] = "time-a.timefreq.bldrdoc.gov";
 //static const char ntpServerName[] = "time-b.timefreq.bldrdoc.gov";
 //static const char ntpServerName[] = "time-c.timefreq.bldrdoc.gov";
+
 
 String Hora;
 String Fecha;
@@ -91,8 +77,8 @@ struct StoreStruct2 {
   int           IP_2;
   int           IP_3;
   int           IP_4;
-  long          time_thinkspeak;
   char          ntpServerName[50];
+  long          time_thinkspeak;
   char          thingspeak_api_key[20];
   char          pwd[8];
   int           sunrise;
@@ -157,7 +143,7 @@ int          ds_anterior      =-5;
 
  
 // Defines
-#define      DefaultName       "PuertaGaraje"  // Default device name
+#define      DefaultName       "Toldo2"  // Default device name
 #define      NTPfastReq        10                 // NTP time request in seconds when  time not set
 #define      NTPslowReq        3600               // NTP time request in seconds after time is  set
 #define      Version           "1.00"             // Firmware version
@@ -165,7 +151,7 @@ String Argument_Name;
 
 // NTP Server details
 //-------------------
-IPAddress timeServer(129, 6, 15, 28);              // time.nist.gov NTP server
+//IPAddress timeServer(129, 6, 15, 28);              // time.nist.gov NTP server
 WiFiUDP Udp;
 unsigned int localPort       = 3232;               // Local port to listen for UDP packets
 bool shouldSaveConfig = false;
