@@ -17,19 +17,17 @@ boolean timers_estado_anterior=0;
 char thingspeak_api_key[20]="1J8HKOKXIW0ZBHVR";
 long time_thinkspeak = 30000;
 
-
 //char ip_emoncms[50] = "miguelalonso.eu3.org";
 //char url_base[50] = "http://miguelalonso.eu3.org/emoncms";
-//char node[20]="Estore4";
+//char node[20]="Estore5";
 //char apikey[50]="49f90831aa8cfbf9953e7a500f8ad065";
 
 char ip_emoncms[50] = "163.117.157.189";
 char url_base[50] = "/emoncms";
-char node[20]="Estore4";
+char node[20]="Estore5";
 char apikey[50]="f90addbe03055fbde7123cdc1996d59b";
 
 long time_emoncms_ant = 2*millis();
-
 
 // NTP Servers:
 //static const char ntpServerName[] = "us.pool.ntp.org";
@@ -144,7 +142,7 @@ int          ds_anterior      =-5;
 
  
 // Defines
-#define      DefaultName       "Estore4"  // Default device name
+#define      DefaultName       "Estore5"  // Default device name
 #define      NTPfastReq        10                 // NTP time request in seconds when  time not set
 #define      NTPslowReq        3600               // NTP time request in seconds after time is  set
 #define      Version           "1.00"             // Firmware version
@@ -152,7 +150,7 @@ String Argument_Name;
 
 // NTP Server details
 //-------------------
-IPAddress timeServer(129, 6, 15, 28);              // time.nist.gov NTP server
+//IPAddress timeServer(129, 6, 15, 28);              // time.nist.gov NTP server
 WiFiUDP Udp;
 unsigned int localPort       = 3232;               // Local port to listen for UDP packets
 bool shouldSaveConfig = false;

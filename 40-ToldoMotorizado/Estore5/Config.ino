@@ -16,9 +16,9 @@ void setupConfig(){
     conf.IP_3            = 15;
     conf.IP_4            = 28;
     conf. EEPROM_chk     =123;
-    conf.Latitud         =40.65;
-    conf.Longitud        =-3.96;
-    strcpy(conf.DevName,"Estore");
+    conf.Latitud         =40.41;
+    conf.Longitud        =-3.731;
+    strcpy(conf.DevName,"Estore5");
     strcpy(conf.thingspeak_api_key,thingspeak_api_key);
     conf.time_thinkspeak           = 30000;
     strcpy(conf.ip_emoncms,ip_emoncms);
